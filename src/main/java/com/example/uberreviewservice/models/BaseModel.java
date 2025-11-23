@@ -1,11 +1,15 @@
 package com.example.uberreviewservice.models;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import java.util.Date;
 
 @MappedSuperclass
+@Getter
+@Setter
 public abstract class BaseModel {
 
     @Id
@@ -18,9 +22,8 @@ public abstract class BaseModel {
     protected Date createdAt;
 
     @Column(nullable = false)
-    @UpdateTimestamp // This annotation automatically sets the value on update
-    @Temporal(TemporalType.TIMESTAMP) // Specifies the type
-    // Matches 'updated_at datetime(6) not null'
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
     protected Date updatedAt;
 }
 
