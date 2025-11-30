@@ -12,12 +12,13 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 @Table(name = "booking_review")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Review extends BaseModel {
 
     @Column(nullable = false)
-    private String content;
+    protected String content;
 
     @Column(nullable = false)
-    private Double rating;
+    protected Double rating;
 
 }
