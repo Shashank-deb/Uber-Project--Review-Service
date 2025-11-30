@@ -14,3 +14,4 @@ public class PassengerReview extends Review{
     @Column(nullable = false)
     private String passengerRating;
 }
+
