@@ -1,12 +1,15 @@
 package com.example.uberreviewservice.services;
 
 import com.example.uberreviewservice.models.Booking;
+import com.example.uberreviewservice.models.Driver;
 import com.example.uberreviewservice.models.Review;
 import com.example.uberreviewservice.repositories.BookingRepository;
+import com.example.uberreviewservice.repositories.DriverRepository;
 import com.example.uberreviewservice.repositories.ReviewRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -18,11 +21,13 @@ public class ReviewService implements CommandLineRunner {
     private final ReviewRepository reviewRepository;
 
     private final BookingRepository bookingRepository; // This field is declared but was not injected
+    private final DriverRepository driverRepository;
 
     // Constructor Injection for both ReviewRepository and BookingRepository
-    public ReviewService(ReviewRepository reviewRepository, BookingRepository bookingRepository) {
+    public ReviewService(ReviewRepository reviewRepository, BookingRepository bookingRepository, DriverRepository driverRepository) {
         this.reviewRepository = reviewRepository;
-        this.bookingRepository = bookingRepository; // Injecting and assigning BookingRepository
+        this.bookingRepository = bookingRepository;// Injecting and assigning BookingRepository
+        this.driverRepository = driverRepository;
     }
 
 
@@ -55,10 +60,30 @@ public class ReviewService implements CommandLineRunner {
 //        System.out.println("***************************");
 
 
-        Optional<Booking> b=bookingRepository.findById(2l);
-        if(b.isPresent()) {
-            bookingRepository.delete(b.get());
-        }
+//        Optional<Booking> b=bookingRepository.findById(2l);
+//        if(b.isPresent()) {
+//            bookingRepository.delete(b.get());
+//        }
+
+//        Optional<Driver> driver = driverRepository.findById(1l);
+//        if(driver.isPresent()) {
+//            System.out.println(driver.get().getName());
+//            List<Booking> bookings=driver.get().getBookings();
+//
+//            for(Booking booking:bookings) {
+//                System.out.println(booking.getId());
+//            }
+//         }
+
+//        Optional<Booking> b = bookingRepository.findById(1l);
+//        if(b.isPresent()) {
+//            System.out.println(b.get().getDriver().getName());
+//        }
+
+
+        Driver d = driverRepository.hqlFindByIdAndLicense(1l, "ABC123456");
+        System.out.println(d.getName());
+
 
     }
 }
