@@ -2,6 +2,7 @@ package com.example.uberreviewservice.models;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Fetch;
 
 import java.util.Date;
 
@@ -13,7 +14,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class Booking extends BaseModel {
 
-     @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE}, fetch = FetchType.LAZY)
+     @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
      private Review review;
 
      @Enumerated(value = EnumType.STRING)
@@ -27,9 +28,9 @@ public class Booking extends BaseModel {
 
      private Long totalDistance;
 
-     @ManyToOne
+     @ManyToOne(fetch = FetchType.LAZY)
      private Driver driver;
 
-     @ManyToOne
+     @ManyToOne(fetch = FetchType.LAZY)
      private Passenger passenger;
 }

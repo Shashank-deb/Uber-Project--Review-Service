@@ -5,9 +5,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import lombok.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
-import java.util.ArrayList;
 import java.util.List;
+
 
 @Entity
 @Getter
@@ -15,13 +17,14 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Driver extends BaseModel{
+public class Driver extends BaseModel {
 
     private String name;
 
     @Column(nullable = false, unique = true)
     private String licenceNumber;
 
-    @OneToMany(mappedBy = "driver" , fetch = FetchType.LAZY)
-    private List<Booking> bookings=new ArrayList<>();
+    @OneToMany(mappedBy = "driver", fetch = FetchType.LAZY)
+//    @Fetch(FetchMode.SELECT)
+    private List<Booking> bookings;
 }
