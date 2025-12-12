@@ -1,8 +1,8 @@
 package com.example.uberreviewservice.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.Fetch;
 
 import java.util.Date;
 
@@ -12,10 +12,9 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","driver","passenger"})
 public class Booking extends BaseModel {
 
-     @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
-     private Review review;
 
      @Enumerated(value = EnumType.STRING)
      private BookingStatus bookingStatus;
