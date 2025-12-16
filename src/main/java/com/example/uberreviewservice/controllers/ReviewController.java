@@ -1,7 +1,6 @@
 package com.example.uberreviewservice.controllers;
 
 import com.example.uberreviewservice.adapters.CreateReviewDtoToReviewAdapter;
-import com.example.uberreviewservice.adapters.CreateReviewDtoToReviewAdapterImpl;
 import com.example.uberreviewservice.dtos.CreateReviewDto;
 import com.example.uberreviewservice.dtos.ReviewDto;
 import com.example.uberreviewservice.models.Review;
