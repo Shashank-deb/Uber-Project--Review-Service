@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -15,7 +16,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@Builder
+@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler","bookings"})

@@ -3,13 +3,14 @@ package com.example.uberreviewservice.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.util.Date;
 
 @Entity
 @Getter
 @Setter
-@Builder
+@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler","driver","passenger"})
